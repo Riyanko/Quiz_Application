@@ -12,6 +12,7 @@ import com.rio.quiz_app.dao.QuestionRepository;
 import com.rio.quiz_app.dao.QuizDao;
 import com.rio.quiz_app.entity.Question;
 import com.rio.quiz_app.entity.Quiz;
+import com.rio.quiz_app.entity.Responsequiz;
 import com.rio.quiz_app.service.QuizService;
 
 @Service
@@ -41,6 +42,21 @@ public class QuizServiceImpl implements QuizService{
 		Optional<Quiz> quiz = quizDao.findById(id);
 		List<Question> questionsFromDB=quiz.get().getQuestions();
 		return questionsFromDB;
+	}
+
+	@Override
+	public int calculateResult(Integer id, List<Responsequiz> responsequiz) {
+		Quiz quiz=quizDao.findById(id).get();
+		List<Question> questions = quiz.getQuestions();
+		int i=0;
+		int result=0;
+		for(Responsequiz rq: responsequiz) {
+			if(rq.getResponse().equals(questions.get(i).getRightAnswer())) {
+				result++;
+			}
+			i++;
+		}
+		return result;
 	}
 	
 	
