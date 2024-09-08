@@ -7,5 +7,7 @@ public interface ServiceQuestion {
 	List<Question> getAllQuestions();
 	List<Question> getByCategory(String category);
 	void addNewQuestion(Question question);
+	void deleteQuestion(int id);
+	Question updateQuestion(Question question);
 	
 }

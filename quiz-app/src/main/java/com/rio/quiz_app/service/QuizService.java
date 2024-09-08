@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 
-import com.rio.quiz_app.dao.QuizDao;
+
 import com.rio.quiz_app.entity.Question;
 import com.rio.quiz_app.entity.Responsequiz;
 

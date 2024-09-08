@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
@@ -27,5 +28,14 @@ public class CustomisedResponseEntityExceptionHandler extends ResponseEntityExce
 				request.getDescription(false)
 		);
 		return new ResponseEntity<>(errorDetails,HttpStatus.NOT_FOUND);
+	}
+	@ExceptionHandler(QuestionNotFoundException.class)
+	public final ResponseEntity<ErrorDetails> handleQuestionNotFoundException(Exception ex, WebRequest request) throws Exception{
+		ErrorDetails error=new ErrorDetails(
+				LocalDateTime.now(),
+				ex.getMessage(),
+				request.getDescription(false)
+		);
+		return new ResponseEntity<>(error,HttpStatus.NOT_FOUND);
 	}
 }
