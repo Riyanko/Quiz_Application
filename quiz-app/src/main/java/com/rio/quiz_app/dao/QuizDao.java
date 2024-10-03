@@ -7,5 +7,5 @@ import com.rio.quiz_app.entity.Quiz;
 
 @Repository
 public interface QuizDao extends JpaRepository<Quiz, Integer>{
-
+	
 }

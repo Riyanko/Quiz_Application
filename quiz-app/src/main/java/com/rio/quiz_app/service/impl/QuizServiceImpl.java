@@ -45,9 +45,10 @@ public class QuizServiceImpl implements QuizService{
 	}
 
 	@Override
-	public int calculateResult(Integer id, List<Responsequiz> responsequiz) {
+	public float calculateResult(Integer id, List<Responsequiz> responsequiz) {
 		Quiz quiz=quizDao.findById(id).get();
 		List<Question> questions = quiz.getQuestions();
+		int size=questions.size();
 		int i=0;
 		int result=0;
 		for(Responsequiz rq: responsequiz) {
@@ -56,7 +57,8 @@ public class QuizServiceImpl implements QuizService{
 			}
 			i++;
 		}
-		return result;
+		float percentage=(((float)result/(float)size)*100);
+		return percentage;
 	}
 	
 	

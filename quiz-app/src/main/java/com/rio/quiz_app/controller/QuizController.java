@@ -34,8 +34,8 @@ public class QuizController {
 	}
 	
 	@PostMapping("/submit/{id}")
-	public int SubmitQuiz(@PathVariable Integer id,@RequestBody List<Responsequiz> responsequiz ) {
-		int result=quizService.calculateResult(id,responsequiz);
-		return result;
+	public String SubmitQuiz(@PathVariable Integer id,@RequestBody List<Responsequiz> responsequiz ) {
+		float result=quizService.calculateResult(id,responsequiz);
+		return result+"% Scored";
 	}
 }

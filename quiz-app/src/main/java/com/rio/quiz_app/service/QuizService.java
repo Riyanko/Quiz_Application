@@ -12,6 +12,6 @@ public interface QuizService {
 
 	ResponseEntity<String> createQuiz(String category, int nQues, String title);
 	List<Question> getQuizQuestions(int id);
-	int calculateResult(Integer id, List<Responsequiz> responsequiz);
+	float calculateResult(Integer id, List<Responsequiz> responsequiz);
 	
 }
